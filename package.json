@@ -1,6 +1,6 @@
 {
   "name": "memes-studio",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Autonomous Indian Viral Meme Studio — Real-time Google & Twitter/X trend hunter, Montserrat Black 900 typography, dual-color contrast, iOS 3D emojis, multi-slide carousels, and 0.5s FFmpeg rendering engine for Instagram.",
   "type": "module",
   "main": "renderer.mjs",
