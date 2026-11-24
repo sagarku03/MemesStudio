@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 
 import readline from 'node:readline';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
 import {
   getGoogleTrends,
   getTwitterXTrends,
@@ -12,6 +15,14 @@ import {
   renderSplitMeme,
   renderCarouselMeme
 } from './renderer.mjs';
+
+const __filename = fileURLToPath(import.meta.url);
+const STUDIO_DIR = dirname(__filename);
+let PKG_VERSION = '2.0.0';
+try {
+  const pkg = JSON.parse(readFileSync(join(STUDIO_DIR, 'package.json'), 'utf8'));
+  PKG_VERSION = pkg.version || '2.0.0';
+} catch (_) {}
 
 const TOOLS = [
   {
@@ -173,7 +184,7 @@ async function handleMcpRequest(req) {
       return respond({
         protocolVersion: '2024-11-05',
         capabilities: { tools: {} },
-        serverInfo: { name: 'meme_studio_mcp', version: '2.0.0' }
+        serverInfo: { name: 'meme_studio_mcp', version: PKG_VERSION }
       });
 
     case 'notifications/initialized':

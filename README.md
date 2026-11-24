@@ -3,6 +3,7 @@
 > **Real-time Trend Hunting (Google + Twitter/X) · Montserrat Black 900 Typography · Dual-Color Contrast · iOS 3D Emojis · Multi-Slide Carousels · 0.5s FFmpeg Rendering for Instagram.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Auto Version](https://img.shields.io/badge/SemVer-Auto--Bump%20on%20Push-blue.svg)](https://github.com/sagarku03/MemesStudio/actions)
 [![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-green.svg)](https://nodejs.org)
 [![MCP](https://img.shields.io/badge/Protocol-MCP%20JSON--RPC-blue.svg)](https://modelcontextprotocol.io)
 [![Instagram Ratio](https://img.shields.io/badge/Ratio-4%3A5%20Portrait%20(1080x1350)-purple.svg)](https://instagram.com)
