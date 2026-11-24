@@ -128,22 +128,22 @@ console.log(`   • iOS 3D Emojis: ${existsSync(emojiPath) ? '✅ OK' : '❌ Mis
 console.log(`   • MCP Server Script: ${existsSync(join(REPO_DIR, 'mcp-server.mjs')) ? '✅ OK' : '❌ Missing'}`);
 console.log(`   • Trend Hunter: ${existsSync(join(REPO_DIR, 'trend_hunter.mjs')) ? '✅ OK' : '❌ Missing'}`);
 
-// 6. Setup Git Pre-Push Hook for Auto-Versioning
+// 6. Setup Git Pre-Commit Hook for Auto-Versioning
 console.log('\n🔄 Step 6: Configuring Auto-Versioning Hook...');
 const gitHookDir = join(REPO_DIR, '.git/hooks');
 if (existsSync(gitHookDir)) {
-  const prePushScript = `#!/usr/bin/env bash
-# Auto-bump patch version before push
+  const preCommitScript = `#!/usr/bin/env bash
+# Auto-bump patch version on commit
 if [ -z "$SKIP_AUTO_BUMP" ]; then
-  echo "🚀 Auto-bumping version in package.json..."
-  node ./scripts/bump-version.mjs
-  git add package.json
-  git commit -m "chore(release): bump version [skip ci]" --no-verify || true
+  if git diff --cached --name-only | grep -qvE "^package\\.json$"; then
+    node ./scripts/bump-version.mjs
+    git add package.json
+  fi
 fi
 `;
   try {
-    writeFileSync(join(gitHookDir, 'pre-push'), prePushScript, { mode: 0o755 });
-    console.log('   ✅ Git pre-push auto-bump hook installed!');
+    writeFileSync(join(gitHookDir, 'pre-commit'), preCommitScript, { mode: 0o755 });
+    console.log('   ✅ Git pre-commit auto-bump hook installed!');
   } catch (_) {}
 }
 
