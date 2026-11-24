@@ -1,0 +1,7 @@
+node_modules/
+Carousel_*
+*.tmp
+*.log
+.DS_Store
+*.png
+!assets/**/*.png
