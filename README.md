@@ -9,6 +9,29 @@
 
 ---
 
+## ⚡ Zero-Friction One-Command Setup
+
+No manual configuration needed! The automated setup script handles everything:
+- ✅ **Dynamic Paths:** Auto-detects wherever the repo is cloned.
+- ✅ **Auto-Installs FFmpeg:** Detects Termux (`pkg install ffmpeg`), Debian/Ubuntu (`apt`), macOS (`brew`).
+- ✅ **Auto-Registers MCP:** Automatically adds `meme_studio_mcp` to `mcp_config.json`.
+- ✅ **Auto-Installs Skill:** Copies `SKILL.md` directly into the agent skills directory.
+- ✅ **Creates Output Folders:** Ready-to-use `/sdcard/Download/Memes` & `Carousels`.
+
+### 1️⃣ Option 1: One-Line Installer (Recommended)
+```bash
+curl -sL https://raw.githubusercontent.com/sagarku03/MemesStudio/main/install.sh | bash
+```
+
+### 2️⃣ Option 2: Clone & Run Setup
+```bash
+git clone https://github.com/sagarku03/MemesStudio.git
+cd MemesStudio
+./setup.sh
+```
+
+---
+
 ## 📸 Key Features
 
 - **🔥 Multi-Source Trend Hunter:** Real-time search surges directly from **Google Trends India** and **Twitter / X India** (via Trends24).
@@ -60,29 +83,15 @@ flowchart TD
 
 ---
 
-## 🚀 Quick Setup (MCP Configuration)
-
-Add the following to your `mcp_config.json` (e.g. in AntiGem, Claude Desktop, or Cursor):
-
-```json
-{
-  "mcpServers": {
-    "memes_studio": {
-      "command": "node",
-      "args": ["/path/to/MemesStudio/mcp-server.mjs"]
-    }
-  }
-}
-```
-
----
-
 ## 📂 Project Structure
 
 ```
 MemesStudio/
+├── setup.sh             # 1-Click Setup Shell Script
+├── setup.mjs            # Auto-installer & Configurator (Node.js)
+├── install.sh           # One-line curl installer
 ├── mcp-server.mjs       # JSON-RPC Stdio MCP Server
-├── renderer.mjs         # High-speed FFmpeg Rendering Engine
+├── renderer.mjs         # High-speed FFmpeg Rendering Engine (Dynamic Paths)
 ├── trend_hunter.mjs     # Multi-Source Trend Hunter
 ├── SKILL.md             # Complete viral meme copywriting skill rules
 ├── package.json         # Node.js project manifest

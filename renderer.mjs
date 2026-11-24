@@ -1,11 +1,17 @@
 import { spawn } from 'node:child_process';
 import { existsSync, mkdirSync, copyFileSync } from 'node:fs';
-import { join, basename } from 'node:path';
+import { join, basename, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const STUDIO_DIR = '/data/user/0/com.termux/files/home/.gemini/meme-studio';
+const __filename = fileURLToPath(import.meta.url);
+const STUDIO_DIR = dirname(__filename);
 const FONT_MONTSERRAT = join(STUDIO_DIR, 'assets/fonts/Montserrat-Black.ttf');
 const EMOJI_DIR = join(STUDIO_DIR, 'assets/emojis');
-const DOWNLOAD_DIR = '/sdcard/Download/Memes';
+
+// Automatically detect Android /sdcard or fallback to ~/Downloads/Memes
+const DOWNLOAD_DIR = existsSync('/sdcard')
+  ? '/sdcard/Download/Memes'
+  : join(process.env.HOME || process.env.USERPROFILE || '.', 'Downloads', 'Memes');
 
 if (!existsSync(DOWNLOAD_DIR)) {
   try { mkdirSync(DOWNLOAD_DIR, { recursive: true }); } catch (_) {}

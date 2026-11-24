@@ -8,7 +8,9 @@
     "memes-studio": "./mcp-server.mjs"
   },
   "scripts": {
-    "start": "node ./mcp-server.mjs"
+    "start": "node ./mcp-server.mjs",
+    "setup": "node ./setup.mjs",
+    "postinstall": "node ./setup.mjs"
   },
   "keywords": [
     "meme",
