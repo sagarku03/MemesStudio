@@ -1,6 +1,6 @@
 {
   "name": "memes-studio",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Autonomous Indian Viral Meme & Reels Studio v3.0 — Real-time Google & Twitter/X trends, Free Memegen/Imgflip templates, 9:16 Reels video memes, Tweet Cards, Fake Chats, 3-Panel Comics, Devanagari + Montserrat Black 900 typography, Instagram SEO & Graph API publishing.",
   "type": "module",
   "main": "renderer.mjs",
