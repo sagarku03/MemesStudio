@@ -4,4 +4,7 @@ Carousel_*
 *.log
 .DS_Store
 *.png
-!assets/**/*.png
+*.mp4
+!assets/emojis/*.png
+assets/templates_cache.json
+assets/templates/

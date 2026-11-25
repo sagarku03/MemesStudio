@@ -1,12 +1,12 @@
-# 🚀 MemesStudio — Autonomous Indian Viral Meme Studio
+# 🚀 MemesStudio v3.0 — Autonomous Indian Viral Meme & Reels Studio
 
-> **Real-time Trend Hunting (Google + Twitter/X) · Montserrat Black 900 Typography · Dual-Color Contrast · iOS 3D Emojis · Multi-Slide Carousels · 0.5s FFmpeg Rendering for Instagram.**
+> **Real-time Google + Twitter/X Trends · 9:16 Video Reels (`zoompan`) · Tweet Cards · WhatsApp Fake Chats · 3-Panel Comics · Multi-Slide Carousels · Hindi Devanagari + Montserrat Black 900 · Free Template API · Instagram SEO & Graph API Publisher.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/badge/Version-3.0.0-orange.svg)](https://github.com/sagarku03/MemesStudio/releases)
 [![Auto Version](https://img.shields.io/badge/SemVer-Auto--Bump%20on%20Push-blue.svg)](https://github.com/sagarku03/MemesStudio/actions)
 [![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18-green.svg)](https://nodejs.org)
-[![MCP](https://img.shields.io/badge/Protocol-MCP%20JSON--RPC-blue.svg)](https://modelcontextprotocol.io)
-[![Instagram Ratio](https://img.shields.io/badge/Ratio-4%3A5%20Portrait%20(1080x1350)-purple.svg)](https://instagram.com)
+[![MCP](https://img.shields.io/badge/Protocol-MCP%2015%20Tools-blue.svg)](https://modelcontextprotocol.io)
 
 ---
 
@@ -15,9 +15,9 @@
 No manual configuration needed! The automated setup script handles everything:
 - ✅ **Dynamic Paths:** Auto-detects wherever the repo is cloned.
 - ✅ **Auto-Installs FFmpeg:** Detects Termux (`pkg install ffmpeg`), Debian/Ubuntu (`apt`), macOS (`brew`).
-- ✅ **Auto-Registers MCP:** Automatically adds `meme_studio_mcp` to `mcp_config.json`.
-- ✅ **Auto-Installs Skill:** Copies `SKILL.md` directly into the agent skills directory.
-- ✅ **Creates Output Folders:** Ready-to-use `/sdcard/Download/Memes` & `Carousels`.
+- ✅ **Auto-Registers MCP:** Automatically adds `meme_studio_mcp` (15 tools) to `mcp_config.json`.
+- ✅ **Auto-Installs Skill:** Copies `SKILL.md` directly into agent skills directory.
+- ✅ **Creates Output Folders:** Ready-to-use `/sdcard/Download/Memes`, `Carousels/`, and `Reels/`.
 
 ### 1️⃣ Option 1: One-Line Installer (Recommended)
 ```bash
@@ -33,18 +33,17 @@ cd MemesStudio
 
 ---
 
-## 📸 Key Features
+## 🔥 What's New in v3.0
 
-- **🔥 Multi-Source Trend Hunter:** Real-time search surges directly from **Google Trends India** and **Twitter / X India** (via Trends24).
-- **⚡ 0.5-Second FFmpeg Rendering:** Instant generation of 1080×1350 (4:5) Instagram-ready graphics.
-- **🎨 High-Impact Typography:** Bundled **Montserrat-Black (900 Weight)** and **Poppins-Black** for punchy, bold readability.
-- **🎯 Psychology-Engineered Two-Tone Headers:**
-  - **Line 1 (Hook):** Jet Black (`#000000`)
-  - **Line 2 (Punchline):** Crimson Red (`#D32F2F`)
-- **😀 Apple iOS 3D Emojis Pack:** Pre-bundled glossy emoji assets (`😂`, `😭`, `💀`, `🤤`, `💸`, `🔥`, `😈`, `😏`, `👀`).
-- **📱 Multi-Slide Instagram Carousels:** Full album generation with automatic `1/N ->` badges and dedicated gallery export.
-- **🔒 Anti-Theft Watermarking:** Translucent pill badge (`@soo_funny_memes` or your custom handle) positioned to prevent cropping.
-- **🤖 Universal MCP Server:** Compatible with AntiGem, Claude Desktop, Cursor, or any Model Context Protocol host.
+- **🎬 9:16 Instagram Reel Video Memes (`meme_render_reel`):** Converts any meme into a 1080×1920 looping MP4 with smooth FFmpeg `zoompan` Ken Burns motion, Instagram safe-zone layout, and optional BGM/SFX audio (or silent MP4 ready for IG Trending Audio).
+- **🐦 X / Twitter Card Generator (`meme_render_tweet_card`):** Authentic Dark/Light tweet cards with circular avatar, verified blue badge, wrapped Hinglish/Hindi text, and bottom reaction image.
+- **💬 Fake Chat Generator (`meme_render_fake_chat`):** WhatsApp Dark, WhatsApp Light, and iMessage bubble templates with auto-wrapped bubbles + reaction photo.
+- **🎭 3-Panel Comic Layout (`meme_render_three_panel`):** Stacked 3-panel storytelling with heavy outlined captions.
+- **🇮🇳 Mixed Hindi (Devanagari) + Hinglish Auto-Wrap:** Powered by FFmpeg `libass` with bundled `Montserrat-Black` + `NotoSansDevanagari-Black` + `Inter` fonts — long captions wrap cleanly and Hindi never breaks!
+- **🌐 Free Template Library (`meme_fetch_templates` & `meme_download_template`):** Integrated with **Memegen.link** & **Imgflip** (zero auth required, 24h local cache).
+- **📈 2025–2026 Instagram SEO (`meme_generate_seo`):** Auto-generates DM-share trigger captions, **3–5 targeted hashtags** (no spam penalty), SEO alt-text, and saves `_caption.txt` sidecars.
+- **🤖 Daily Autopilot (`npm run autopilot`):** Automatically fetches live safe India trends, pulls matching templates, and renders both a 4:5 Post + 9:16 Reel + Caption file.
+- **📤 Instagram Graph API Publisher (`meme_publish_instagram`):** Direct publishing support for Images, Carousels (up to 10 slides), and Reels.
 
 ---
 
@@ -52,35 +51,43 @@ cd MemesStudio
 
 ```mermaid
 flowchart TD
-    subgraph Trends ["Live Indian Trends"]
-        G["Google Trends India (Search Surges)"]
-        X["Twitter / X India (Trending Hashtags)"]
+    subgraph Discovery ["1. Discovery & Templates"]
+        G["Google Trends India + Twitter/X"]
+        T["Memegen.link + Imgflip Templates"]
     end
 
-    Trends --> Hunter["trend_hunter.mjs"]
-    Hunter --> Engine["renderer.mjs"]
+    Discovery --> Core["renderer.mjs + libass + png-shapes"]
 
-    Engine --> Macro["Yellow Header Macro (1080x1350)"]
-    Engine --> Comparison["Left vs Right Comparison"]
-    Engine --> Split["Top vs Bottom Split"]
-    Engine --> Carousel["Multi-Slide Carousel Album (1/N Badges)"]
+    Core --> P1["4:5 Posts (Header / Tweet / Chat / 3-Panel / Split)"]
+    Core --> P2["Multi-Slide Carousels (1/N Badges)"]
+    Core --> P3["9:16 Video Reels (FFmpeg zoompan MP4)"]
 
-    Macro & Comparison & Split & Carousel --> Output["/sdcard/Download/Memes/"]
+    P1 & P2 & P3 --> SEO["seo_helper.mjs (Caption + 3-5 Hashtags + Alt-Text)"]
+    SEO --> Export["/sdcard/Download/Memes/ + Reels/ + Carousels/"]
+    SEO --> Graph["ig_publisher.mjs (Optional Meta Graph API)"]
 ```
 
 ---
 
-## 🛠️ MCP Tools Reference
+## 🛠️ Complete MCP Tools Reference (15 Tools)
 
-| Tool Name | Parameters | Description |
+| Category | Tool Name | Purpose |
 | :--- | :--- | :--- |
-| `meme_fetch_all_trends` | `limit_per_source: number` | Fetches aggregated Google Trends + Twitter/X India trends. |
-| `meme_fetch_twitter_trends` | `limit: number` | Fetches real-time Twitter/X trending hashtags in India. |
-| `meme_fetch_india_trends` | `limit: number` | Fetches Google Trends India search queries. |
-| `meme_render_yellow_header` | `image_path, hook_text, punchline_text, emoji, watermark` | Renders classic yellow-header 1080×1350 meme in 0.5s. |
-| `meme_render_carousel` | `album_title, slides: [...], watermark` | Renders multi-slide swipeable Instagram carousel pack. |
-| `meme_render_comparison` | `left_image, right_image, left_label, right_label, header_title, emoji` | Renders dual-column Left vs Right comparison meme. |
-| `meme_render_split` | `top_image, bottom_image, top_label, bottom_label` | Renders Top vs Bottom expectation vs reality meme. |
+| **Trends** | `meme_fetch_all_trends` | Combined Google Trends + Twitter/X India trends |
+| **Trends** | `meme_fetch_india_trends` | Google Trends India real-time searches |
+| **Trends** | `meme_fetch_twitter_trends` | Twitter/X India trending hashtags |
+| **Templates** | `meme_fetch_templates` | Search 100+ free Memegen.link & Imgflip templates |
+| **Templates** | `meme_download_template` | Download blank template image locally |
+| **Posts** | `meme_render_yellow_header` | 1080×1350 Yellow/Dark/Light header meme (Hindi+English) |
+| **Posts** | `meme_render_tweet_card` | 1080×1350 X/Twitter card meme + verified badge |
+| **Posts** | `meme_render_fake_chat` | 1080×1350 WhatsApp / iMessage fake chat meme |
+| **Posts** | `meme_render_three_panel` | 1080×1350 3-panel stacked comic dialogue meme |
+| **Posts** | `meme_render_comparison` | 1080×1350 Left vs Right dual-column comparison |
+| **Posts** | `meme_render_split` | 1080×1350 Top vs Bottom split meme |
+| **Albums** | `meme_render_carousel` | 2–20 slide swipeable carousel album (`1/N` badges) |
+| **Video** | `meme_render_reel` | 1080×1920 9:16 MP4 video meme with `zoompan` + audio |
+| **Growth** | `meme_generate_seo` | DM-share caption, 3–5 hashtags, alt-text & IST windows |
+| **Publish** | `meme_publish_instagram` | Official Meta Instagram Graph API v21.0 publisher |
 
 ---
 
@@ -88,18 +95,23 @@ flowchart TD
 
 ```
 MemesStudio/
-├── setup.sh             # 1-Click Setup Shell Script
-├── setup.mjs            # Auto-installer & Configurator (Node.js)
-├── install.sh           # One-line curl installer
-├── mcp-server.mjs       # JSON-RPC Stdio MCP Server
-├── renderer.mjs         # High-speed FFmpeg Rendering Engine (Dynamic Paths)
-├── trend_hunter.mjs     # Multi-Source Trend Hunter
-├── SKILL.md             # Complete viral meme copywriting skill rules
-├── package.json         # Node.js project manifest
+├── setup.sh / setup.mjs / install.sh   # 1-Click Installer & Auto-Config
+├── mcp-server.mjs                      # JSON-RPC Stdio MCP Server (15 Tools)
+├── renderer.mjs                        # FFmpeg + libass Rendering Engine
+├── trend_hunter.mjs                    # Multi-Source India Trend Hunter
+├── template_fetcher.mjs                # Memegen.link + Imgflip Template Client
+├── seo_helper.mjs                      # 2025-2026 Instagram SEO & Captions
+├── ig_publisher.mjs                    # Meta Graph API Publisher
+├── lib/
+│   ├── ass-builder.mjs                 # Mixed Hindi/Latin ASS + Word-Wrap
+│   └── png-shapes.mjs                  # Zero-Dep Antialiased PNG Generator
+├── scripts/
+│   ├── autopilot.mjs                   # Daily Trend-to-Meme+Reel Autopilot
+│   └── bump-version.mjs                # SemVer Auto-Bump Script
 ├── assets/
-│   ├── fonts/           # Montserrat-Black.ttf, Poppins-Black.ttf
-│   └── emojis/          # Apple iOS 3D emojis (joy, sob, skull, etc.)
-└── README.md
+│   ├── fonts/                          # Montserrat-Black, NotoSansDevanagari-Black, Inter, Poppins
+│   └── emojis/                         # 15 Twemoji 3D PNG assets
+└── SKILL.md
 ```
 
 ---

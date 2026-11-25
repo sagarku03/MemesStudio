@@ -110,23 +110,32 @@ const downloadDir = existsSync('/sdcard')
   ? '/sdcard/Download/Memes'
   : join(HOME, 'Downloads', 'Memes');
 const carouselDir = join(downloadDir, 'Carousels');
+const reelsDir = join(downloadDir, 'Reels');
 
 try {
   mkdirSync(downloadDir, { recursive: true });
   mkdirSync(carouselDir, { recursive: true });
+  mkdirSync(reelsDir, { recursive: true });
   console.log(`   ✅ Single memes output: ${downloadDir}`);
   console.log(`   ✅ Carousels output: ${carouselDir}`);
+  console.log(`   ✅ Reels output: ${reelsDir}`);
 } catch (_) {}
 
 // 5. Verification & Health Check
 console.log('\n🔍 Step 5: Running System Healthcheck...');
 const fontPath = join(REPO_DIR, 'assets/fonts/Montserrat-Black.ttf');
+const hindiFontPath = join(REPO_DIR, 'assets/fonts/NotoSansDevanagari-Black.ttf');
+const interFontPath = join(REPO_DIR, 'assets/fonts/Inter-Medium.ttf');
 const emojiPath = join(REPO_DIR, 'assets/emojis/joy.png');
 
 console.log(`   • Montserrat Black Font: ${existsSync(fontPath) ? '✅ OK' : '❌ Missing'}`);
+console.log(`   • Hindi Devanagari Font: ${existsSync(hindiFontPath) ? '✅ OK' : '❌ Missing'}`);
+console.log(`   • Tweet/Chat Inter Font: ${existsSync(interFontPath) ? '✅ OK' : '❌ Missing'}`);
 console.log(`   • iOS 3D Emojis: ${existsSync(emojiPath) ? '✅ OK' : '❌ Missing'}`);
 console.log(`   • MCP Server Script: ${existsSync(join(REPO_DIR, 'mcp-server.mjs')) ? '✅ OK' : '❌ Missing'}`);
 console.log(`   • Trend Hunter: ${existsSync(join(REPO_DIR, 'trend_hunter.mjs')) ? '✅ OK' : '❌ Missing'}`);
+console.log(`   • Template Fetcher: ${existsSync(join(REPO_DIR, 'template_fetcher.mjs')) ? '✅ OK' : '❌ Missing'}`);
+console.log(`   • SEO & Graph Publisher: ${existsSync(join(REPO_DIR, 'seo_helper.mjs')) && existsSync(join(REPO_DIR, 'ig_publisher.mjs')) ? '✅ OK' : '❌ Missing'}`);
 
 // 6. Setup Git Pre-Commit Hook for Auto-Versioning
 console.log('\n🔄 Step 6: Configuring Auto-Versioning Hook...');

@@ -1,7 +1,7 @@
 {
   "name": "memes-studio",
-  "version": "2.0.4",
-  "description": "Autonomous Indian Viral Meme Studio — Real-time Google & Twitter/X trend hunter, Montserrat Black 900 typography, dual-color contrast, iOS 3D emojis, multi-slide carousels, and 0.5s FFmpeg rendering engine for Instagram.",
+  "version": "3.0.0",
+  "description": "Autonomous Indian Viral Meme & Reels Studio v3.0 — Real-time Google & Twitter/X trends, Free Memegen/Imgflip templates, 9:16 Reels video memes, Tweet Cards, Fake Chats, 3-Panel Comics, Devanagari + Montserrat Black 900 typography, Instagram SEO & Graph API publishing.",
   "type": "module",
   "main": "renderer.mjs",
   "bin": {
@@ -11,6 +11,7 @@
     "start": "node ./mcp-server.mjs",
     "setup": "node ./setup.mjs",
     "postinstall": "node ./setup.mjs",
+    "autopilot": "node ./scripts/autopilot.mjs",
     "bump": "node ./scripts/bump-version.mjs",
     "release": "node ./scripts/bump-version.mjs && git add package.json && git commit -m 'chore(release): bump version [skip ci]' && git push origin main"
   },
@@ -18,6 +19,7 @@
     "meme",
     "mcp",
     "instagram",
+    "reels",
     "indian-memes",
     "google-trends",
     "twitter-trends",
